@@ -86,7 +86,7 @@ class Expenses extends Component {
             value={ currency }
             onChange={ this.handleChange }
           >
-            {currencies.filter((coin) => coin !== 'USDT').map((Currency) => (
+            {currencies.map((Currency) => (
               <option key={ Currency } value={ Currency }>
                 {Currency}
               </option>

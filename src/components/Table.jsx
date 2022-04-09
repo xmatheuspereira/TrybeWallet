@@ -22,6 +22,7 @@ class ExpensesTable extends React.Component {
         </thead>
         <tbody>
           {expenses.map(({
+            index,
             id,
             description,
             tag,
@@ -32,32 +33,30 @@ class ExpensesTable extends React.Component {
             const exchange = Number(exchangeRates[currency].ask);
 
             return (
-              <tr key={ id }>
-                <tr>
-                  <td>{description}</td>
-                  <td>{tag}</td>
-                  <td>{method}</td>
-                  <td>{Number(value).toFixed(2)}</td>
-                  <td>{exchangeRates[currency].name}</td>
-                  <td>{exchange.toFixed(2)}</td>
-                  <td>{(exchange * value).toFixed(2)}</td>
-                  <td>Real</td>
-                  <td>
-                    <button
-                      data-testid="edit-btn"
-                      type="button"
-                    >
-                      Editar
-                    </button>
-                    <button
-                      data-testid="delete-btn"
-                      type="button"
-                      onClick={ () => dispatch(deleteExpenses(id)) }
-                    >
-                      Excluir
-                    </button>
-                  </td>
-                </tr>
+              <tr key={ index }>
+                <td>{description}</td>
+                <td>{tag}</td>
+                <td>{method}</td>
+                <td>{Number(value).toFixed(2)}</td>
+                <td>{exchangeRates[currency].name}</td>
+                <td>{exchange.toFixed(2)}</td>
+                <td>{(exchange * value).toFixed(2)}</td>
+                <td>Real</td>
+                <td>
+                  <button
+                    data-testid="edit-btn"
+                    type="button"
+                  >
+                    Editar
+                  </button>
+                  <button
+                    data-testid="delete-btn"
+                    type="button"
+                    onClick={ () => dispatch(deleteExpenses(id)) }
+                  >
+                    Excluir
+                  </button>
+                </td>
               </tr>
             );
           })}
