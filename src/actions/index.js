@@ -28,6 +28,7 @@ export const deleteExpenses = (payload) => ({
 export function getCurrencies() {
   return async (dispatch) => {
     const currency = await fetchCurrencies();
-    dispatch(currencies(Object.keys(currency)));
+    console.log(currency);
+    dispatch(currencies(Object.keys(currency).filter((coin) => coin !== 'USDT')));
   };
 }
